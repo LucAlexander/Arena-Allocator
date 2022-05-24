@@ -12,6 +12,9 @@ compile:
 compile-windows:
 	$(CCWIN) winmain.c $(FILES) $(CLIBSWIN) $(CLIBS) $(CFLAGS) $(OUT).exe
 
+compile-linked:
+	$(CC) main.c -L. -lArenaAllocator $(CLIBS) $(CFLAGS) $(OUT)
+
 debug:
 	$(CC) main.c $(FILES) $(CLIBS) $(CDEBUGFLAGS) $(CFLAGS) $(OUT)
 
@@ -33,3 +36,4 @@ rebuild:
 
 clean:
 	rm -f $(OUT)
+	rm -f $(OUT).exe
