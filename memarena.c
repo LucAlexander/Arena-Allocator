@@ -11,6 +11,7 @@ mem_arena* mem_arena_alloc(size_t initial, size_t resize_size, uint32_t max_resi
 	arena->resize_count = max_resizes;
 	arena->position = 0;
 	arena->pool = calloc(initial, sizeof(uint8_t));
+	arena->next = NULL;
 	return arena;
 }
 

@@ -1,4 +1,5 @@
 CC=gcc
+CCWIN=x86_64-w64-mingw32-gcc
 CFLAGS=-lm -o
 CDEBUGFLAGS=-Wall -g
 OUT=arenarun
@@ -7,8 +8,15 @@ LNAME=libArenaAllocator.a
 
 compile:
 	$(CC) main.c $(FILES) $(CLIBS) $(CFLAGS) $(OUT) 
+	
+compile-windows:
+	$(CCWIN) winmain.c $(FILES) $(CLIBSWIN) $(CLIBS) $(CFLAGS) $(OUT).exe
+
 debug:
 	$(CC) main.c $(FILES) $(CLIBS) $(CDEBUGFLAGS) $(CFLAGS) $(OUT)
+
+debug-windows:
+	$(CCWIN) winmain.c $(FILES) $(CLIBS) $(CDEBUGFLAGS) $(CFLAGS) $(OUT).exe
 
 build:
 	mkdir object

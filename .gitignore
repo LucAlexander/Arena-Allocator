@@ -1,3 +1,6 @@
 main.c
 object/
 libArenaAllocator.a
+arenarun
+arenarun.exe
+winmain.c
