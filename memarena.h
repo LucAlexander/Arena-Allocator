@@ -3,6 +3,7 @@
 
 #include <inttypes.h>
 #include <stddef.h>
+#include <string.h>
 
 struct mem_arena;
 
@@ -29,5 +30,14 @@ void mem_arena_display(mem_arena* arena);
 
 #define REQUEST(type, name, arena)\
        	type* name = mem_arena_request(arena, sizeof(type)) 
+
+#define REQUEST_SIZE(type, name, arena, size)\
+	type* name = mem_arena_request(arena, size)
+
+#define REQUEST_RESIZE(type, name, arena, size, newsize)\
+	type* REALLOCATOR##_type##_name = mem_arena_request(arena, newsize);\
+	memcpy(REALLOCATOR##_type##_name, name, sizeof(size));\
+	name = REALLOCATOR##_type##_name
+	
 
 #endif
